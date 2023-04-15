@@ -7,7 +7,7 @@ class Buscape():
         BASE_URL = 'https://www.buscape.com.br'
         URL = f"{BASE_URL}/{category}/{search}"
         response = requests.get(URL)
-        soup = BeautifulSoup(response.content, 'html.parser')
+        soup = BeautifulSoup(response.text, 'html.parser')
 
         products = []
 
