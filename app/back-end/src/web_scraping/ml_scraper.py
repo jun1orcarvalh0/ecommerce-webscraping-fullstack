@@ -8,6 +8,8 @@ database = client[config["MONGO_DB"]]
 
 mercadolivre_collection = database.mercadolivre
 
+BASE_URL = 'https://lista.mercadolivre.com.br'
+
 
 class MercadoLivre:
     def get_products(category, search):
@@ -31,7 +33,7 @@ def get_products_from_ml(category, search):
 
 
 def get_mobile_products(category, search):
-    URL = f'https://lista.mercadolivre.com.br/celulares-telefones/celulares-smartphones//{search}'
+    URL = f'{BASE_URL}/celulares-telefones/celulares-smartphones/{search}'
     response = requests.get(URL)
     soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -56,7 +58,7 @@ def get_mobile_products(category, search):
 
 
 def get_tv_products(category, search):
-    URL = f'https://lista.mercadolivre.com.br/tv-{search}'
+    URL = f'{BASE_URL}/tv-{search}'
     response = requests.get(URL)
     soup = BeautifulSoup(response.content, 'html.parser')
 
@@ -81,7 +83,7 @@ def get_tv_products(category, search):
 
 
 def get_refrigerator_products(category, search):
-    URL = f'https://lista.mercadolivre.com.br/geladeira-{search}'
+    URL = f'{BASE_URL}/geladeira-{search}'
     response = requests.get(URL)
     soup = BeautifulSoup(response.content, 'html.parser')
 

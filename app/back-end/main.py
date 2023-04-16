@@ -25,7 +25,8 @@ def home():
 def buscape_web_scraper(category: str, search: str):
     if category not in categories:
         raise HTTPException(
-            status_code=400, detail="This categorie is not available at the moment"
+            status_code=400,
+            detail="This categorie is not available at the moment"
             )
     return Buscape.get_products(category, search)
 
@@ -34,6 +35,7 @@ def buscape_web_scraper(category: str, search: str):
 def ml_web_scraper(category: str, search: str):
     if category not in categories:
         raise HTTPException(
-            status_code=400, detail="This categorie is not available at the moment"
+            status_code=400,
+            detail="This categorie is not available at the moment"
         )
     return MercadoLivre.get_products(category, search)
