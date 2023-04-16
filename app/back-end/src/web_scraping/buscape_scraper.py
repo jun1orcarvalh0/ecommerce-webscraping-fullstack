@@ -36,7 +36,7 @@ def get_products_from_buscape(category, search):
             ).text.strip()
         new_product["price"] = product.find(
             'p', class_='Text_Text__h_AF6 Text_MobileHeadingS__Zxam2'
-            ).text.replace(',', '.')
+            ).text.replace(',', '.').replace('R$', '').replace(' ', '')
         new_product["link"] = BASE_URL + product.find('a')['href']
         new_product["category"] = category
         products.append(new_product)

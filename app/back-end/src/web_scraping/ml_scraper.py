@@ -31,7 +31,7 @@ def get_products_from_ml(category, search):
 
 
 def get_mobile_products(category, search):
-    URL = f'https://lista.mercadolivre.com.br/celulares-telefones/{search}'
+    URL = f'https://lista.mercadolivre.com.br/celulares-telefones/celulares-smartphones//{search}'
     response = requests.get(URL)
     soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -50,7 +50,7 @@ def get_mobile_products(category, search):
         new_product["link"] = product.find('a')['href']
         new_product["category"] = category
         products.append(new_product)
-    
+
     save_data = save_scraping_on_db(category, search, products)
     return save_data
 
@@ -75,7 +75,7 @@ def get_tv_products(category, search):
         new_product["link"] = product.find('a')['href']
         new_product["category"] = category
         products.append(new_product)
-    
+
     save_data = save_scraping_on_db(category, search, products)
     return save_data
 
@@ -100,9 +100,10 @@ def get_refrigerator_products(category, search):
         new_product["link"] = product.find('a')['href']
         new_product["category"] = category
         products.append(new_product)
-   
+
     save_data = save_scraping_on_db(category, search, products)
     return save_data
+
 
 def save_scraping_on_db(category, search, products):
     mercadolivre_collection.insert_one(
