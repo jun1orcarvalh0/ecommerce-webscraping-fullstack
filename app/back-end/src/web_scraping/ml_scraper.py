@@ -1,4 +1,5 @@
 import requests
+from fastapi import HTTPException
 from dotenv import dotenv_values
 from src.config.database import client
 from bs4 import BeautifulSoup
@@ -53,6 +54,12 @@ def get_mobile_products(category, search):
         new_product["category"] = category
         products.append(new_product)
 
+    if len(products) == 0:
+        raise HTTPException(
+            status_code=404,
+            detail="Not Found Error"
+            )
+
     save_data = save_scraping_on_db(category, search, products)
     return save_data
 
@@ -78,6 +85,12 @@ def get_tv_products(category, search):
         new_product["category"] = category
         products.append(new_product)
 
+    if len(products) == 0:
+        raise HTTPException(
+            status_code=404,
+            detail="Not Found Error"
+        )
+
     save_data = save_scraping_on_db(category, search, products)
     return save_data
 
@@ -102,6 +115,12 @@ def get_refrigerator_products(category, search):
         new_product["link"] = product.find('a')['href']
         new_product["category"] = category
         products.append(new_product)
+
+    if len(products) == 0:
+        raise HTTPException(
+            status_code=404,
+            detail="Not Found Error"
+        )
 
     save_data = save_scraping_on_db(category, search, products)
     return save_data
