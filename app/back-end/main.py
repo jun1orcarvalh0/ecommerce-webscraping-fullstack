@@ -1,8 +1,17 @@
 from fastapi import FastAPI
-from src.web_scraping.buscape_scraper import Buscape
+from dotenv import dotenv_values
+from src.config.database import client
 from src.web_scraping.ml_scraper import MercadoLivre
+from src.web_scraping.buscape_scraper import Buscape
 
 app = FastAPI()
+config = dotenv_values()
+
+
+@app.on_event("startup")
+def startup():
+    app.mongodb_client = client
+    app.database = client[config["MONGO_DB"]]
 
 
 @app.get("/")
