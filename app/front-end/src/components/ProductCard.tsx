@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-type ProductCardsProps = {
+export type ProductType = {
   category: string;
   picture: string;
   title: string;
@@ -15,7 +15,7 @@ const ProductCard = ({
   title,
   price,
   link
-}: ProductCardsProps) => {
+}: ProductType) => {
   return (
     <div className="card w-3/12 h-fit rounded-xl border-2 border-slate-700:1 p-6 mb-4">
       <div className="flex h-48 max-h-full justify-center img-area">
