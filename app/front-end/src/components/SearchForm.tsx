@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 
-import {
-  recoverBuscapeSearch,
-  recoverMercadoLivreSearch
-} from '@/api/fetchData';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { recoverBuscapeSearch, recoverMercadoLivreSearch } from 'api/fetchData';
+import { Context } from 'context/Context';
 import { z } from 'zod';
 
 const schema = z.object({
@@ -17,6 +15,7 @@ const schema = z.object({
 type FormProps = z.infer<typeof schema>;
 
 const SearchForm = () => {
+  const { setScrapingData, scrapingData } = useContext(Context);
   const {
     register,
     handleSubmit,
@@ -33,11 +32,14 @@ const SearchForm = () => {
         data.category,
         data.search
       );
-      console.log(result);
+
+      setScrapingData(result);
+      console.log(scrapingData);
     }
     if (data.website === 'Buscape') {
       const result = await recoverBuscapeSearch(data.category, data.search);
-      console.log(result);
+      setScrapingData(result);
+      console.log(scrapingData);
     }
   };
 

@@ -1,9 +1,15 @@
 'use client';
 import Head from 'next/head';
+import { useContext } from 'react';
 
-import SearchForm from '@/components/SearchForm';
+import ProductCard from 'components/ProductCard';
+import SearchForm from 'components/SearchForm';
+
+import { Context } from 'context/Context';
 
 export default function Home() {
+  const { scrapingData } = useContext(Context);
+  const { products } = scrapingData;
   return (
     <>
       <Head>
@@ -13,6 +19,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SearchForm />
+      <div className="h-96 w-full flex justify-around">
+        {products?.map((product) => (
+          <ProductCard
+            key={product.title}
+            category={product.category}
+            picture={product.picture}
+            title={product.title}
+            price={product.price}
+            link={product.link}
+          />
+        ))}
+      </div>
     </>
   );
 }
