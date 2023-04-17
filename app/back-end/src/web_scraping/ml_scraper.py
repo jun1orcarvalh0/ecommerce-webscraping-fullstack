@@ -1,11 +1,11 @@
+from decouple import config
 import requests
 from fastapi import HTTPException
-from dotenv import dotenv_values
 from src.config.database import client
 from bs4 import BeautifulSoup
 
-config = dotenv_values()
-database = client[config["MONGO_DB"]]
+MONGO_DB_DATABASE = config("MONGO_DB")
+database = client[MONGO_DB_DATABASE]
 
 mercadolivre_collection = database.mercadolivre
 

@@ -1,11 +1,11 @@
 import requests
 from fastapi import HTTPException
-from dotenv import dotenv_values
+from decouple import config
 from src.config.database import client
 from bs4 import BeautifulSoup
 
-config = dotenv_values()
-database = client[config["MONGO_DB"]]
+MONGO_DB_DATABASE = config("MONGO_DB")
+database = client[MONGO_DB_DATABASE]
 
 buscape_collection = database.buscape
 
