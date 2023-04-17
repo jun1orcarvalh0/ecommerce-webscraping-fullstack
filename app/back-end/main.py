@@ -6,6 +6,7 @@ from src.web_scraping.ml_scraper import MercadoLivre
 from src.web_scraping.buscape_scraper import Buscape
 
 app = FastAPI()
+
 MONGO_DB_DATABASE = config("MONGO_DB")
 
 categories = ["celular", "tv", "geladeira"]
