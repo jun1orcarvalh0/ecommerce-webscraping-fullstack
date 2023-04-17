@@ -44,7 +44,7 @@ const SearchForm = () => {
   };
 
   return (
-    <div className="border-x-purple-400 rounded-lg p-4 mt-1 mb-4 bg-transparent">
+    <div>
       <form
         onSubmit={handleSubmit(handleForm)}
         className="flex w-full justify-center"

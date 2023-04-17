@@ -19,7 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SearchForm />
-      <div className="h-96 w-full flex justify-around">
+      <div className="flex w-full justify-between p-8">
         {products?.map((product) => (
           <ProductCard
             key={product.title}

@@ -17,11 +17,11 @@ const ProductCard = ({
   link
 }: ProductCardsProps) => {
   return (
-    <div className="card w-2/12 h-fit rounded-xl border-2 border-slate-700:1 py-6">
-      <div className="flex justify-center img-area">
+    <div className="card w-3/12 h-fit rounded-xl border-2 border-slate-700:1 p-6 mb-4">
+      <div className="flex h-48 max-h-full justify-center img-area">
         <img src={picture} alt={title} className="object-contain rounded-lg" />
       </div>
-      <div className="flex flex-col text-area mt-6 text-center">
+      <div className="flex flex-col h-44 text-area mt-6 text-center justify-around">
         <span className="text-lg text-gray-600 mt-3">{title}</span>
         <span className="text-lg text-gray-600 mt-3">
           Category: {category.toUpperCase()}
