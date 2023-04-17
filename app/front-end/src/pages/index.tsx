@@ -1,6 +1,7 @@
 'use client';
 import Head from 'next/head';
 import { useContext } from 'react';
+import ReactLoading from 'react-loading';
 
 import ProductCard from 'components/ProductCard';
 import { ProductType } from 'components/ProductCard';
@@ -9,7 +10,7 @@ import SearchForm from 'components/SearchForm';
 import { Context } from 'context/Context';
 
 export default function Home() {
-  const { scrapingData } = useContext(Context);
+  const { scrapingData, isLoading } = useContext(Context);
   const { products } = scrapingData;
   return (
     <>
@@ -20,17 +21,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SearchForm />
-      <div className="flex w-full justify-between p-8">
-        {products?.map((product: ProductType) => (
-          <ProductCard
-            key={product.title}
-            category={product.category}
-            picture={product.picture}
-            title={product.title}
-            price={product.price}
-            link={product.link}
+      <div className="flex w-full justify-center p-8 gap-24">
+        {isLoading ? (
+          <ReactLoading
+            type="spin"
+            color="dark"
+            height={40}
+            width={40}
+            className="flex justify-center"
           />
-        ))}
+        ) : (
+          products?.map((product: ProductType) => (
+            <ProductCard
+              key={product.title}
+              category={product.category}
+              picture={product.picture}
+              title={product.title}
+              price={product.price}
+              link={product.link}
+            />
+          ))
+        )}
       </div>
     </>
   );
