@@ -1,12 +1,12 @@
+from decouple import config
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from dotenv import dotenv_values
 from src.config.database import client
 from src.web_scraping.ml_scraper import MercadoLivre
 from src.web_scraping.buscape_scraper import Buscape
 
 app = FastAPI()
-config = dotenv_values()
+MONGO_DB_DATABASE = config("MONGO_DB")
 
 categories = ["celular", "tv", "geladeira"]
 
@@ -14,7 +14,7 @@ categories = ["celular", "tv", "geladeira"]
 @app.on_event("startup")
 def startup():
     app.mongodb_client = client
-    app.database = client[config["MONGO_DB"]]
+    app.database = client[MONGO_DB_DATABASE]
 
 
 app.add_middleware(
