@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from dotenv import dotenv_values
 from src.config.database import client
 from src.web_scraping.ml_scraper import MercadoLivre
@@ -14,6 +15,15 @@ categories = ["celular", "tv", "geladeira"]
 def startup():
     app.mongodb_client = client
     app.database = client[config["MONGO_DB"]]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins='*',
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
