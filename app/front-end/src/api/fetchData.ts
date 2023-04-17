@@ -21,7 +21,6 @@ const recoverBuscapeSearch = async (category: string, search: string) => {
 
 const recoverMercadoLivreSearch = async (category: string, search: string) => {
   try {
-    console.log(API_URL);
     const URL = `${API_URL}/products-from-ml/${category}/${search}`;
     const result = await api.get(URL);
     return result.data;
