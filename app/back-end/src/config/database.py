@@ -1,9 +1,9 @@
 from pymongo.mongo_client import MongoClient
-from dotenv import dotenv_values
+from decouple import config
 
-config = dotenv_values()
+MONGO_DB_URL = config("MONGO_URL")
 
-client = MongoClient(config["MONGO_URL"])
+client = MongoClient(MONGO_DB_URL)
 
 try:
     client.admin.command("ping")
