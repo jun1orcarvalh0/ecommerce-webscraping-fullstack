@@ -2,9 +2,10 @@ pymongo==4.3.2
 black==22.3.0
 flake8==4.0.1
 requests==2.24.0
-bs4
-fastapi
-uvicorn
-pydantic
-python-dotenv
+beautifulsoup4==4.12.2
+fastapi==0.95.1
+uvicorn==0.21.1
+gunicorn==20.1.0
+pydantic==1.10.7
+python-dotenv==1.0.0
 pymongo[srv]
