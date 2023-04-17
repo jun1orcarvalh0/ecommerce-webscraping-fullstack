@@ -9,13 +9,13 @@ import { z } from 'zod';
 const schema = z.object({
   website: z.string().min(2, 'You must choose a website'),
   category: z.string().min(2, 'You must choose a category'),
-  search: z.string()
+  search: z.string().min(1, 'You must input a text')
 });
 
 type FormProps = z.infer<typeof schema>;
 
 const SearchForm = () => {
-  const { setScrapingData, setIsLoading, isLoading } = useContext(Context);
+  const { setScrapingData, setIsLoading } = useContext(Context);
   const {
     register,
     handleSubmit,
@@ -85,6 +85,9 @@ const SearchForm = () => {
             {...register('search')}
             placeholder="Want to be more specific?"
           />
+          {errors.search?.message && (
+            <p className="text-red-600">{errors.search.message}</p>
+          )}
         </div>
         <div className="flex flex-col justify-center w-1/12">
           <button
