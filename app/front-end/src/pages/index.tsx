@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useContext } from 'react';
 
 import ProductCard from 'components/ProductCard';
+import { ProductType } from 'components/ProductCard';
 import SearchForm from 'components/SearchForm';
 
 import { Context } from 'context/Context';
@@ -20,7 +21,7 @@ export default function Home() {
       </Head>
       <SearchForm />
       <div className="flex w-full justify-between p-8">
-        {products?.map((product) => (
+        {products?.map((product: ProductType) => (
           <ProductCard
             key={product.title}
             category={product.category}

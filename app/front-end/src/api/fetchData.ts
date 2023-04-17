@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: process.env.API_URL,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -11,7 +11,7 @@ export const api = axios.create({
 
 const recoverBuscapeSearch = async (category: string, search: string) => {
   try {
-    const URL = `${BASE_URL}/products-from-buscape/${category}/${search}`;
+    const URL = `${API_URL}/products-from-buscape/${category}/${search}`;
     const result = await api.get(URL);
     return result.data;
   } catch (error: any) {
@@ -21,7 +21,8 @@ const recoverBuscapeSearch = async (category: string, search: string) => {
 
 const recoverMercadoLivreSearch = async (category: string, search: string) => {
   try {
-    const URL = `${BASE_URL}/products-from-ml/${category}/${search}`;
+    console.log(API_URL);
+    const URL = `${API_URL}/products-from-ml/${category}/${search}`;
     const result = await api.get(URL);
     return result.data;
   } catch (error: any) {

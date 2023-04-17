@@ -15,7 +15,7 @@ const schema = z.object({
 type FormProps = z.infer<typeof schema>;
 
 const SearchForm = () => {
-  const { setScrapingData, scrapingData } = useContext(Context);
+  const { setScrapingData } = useContext(Context);
   const {
     register,
     handleSubmit,
@@ -34,12 +34,10 @@ const SearchForm = () => {
       );
 
       setScrapingData(result);
-      console.log(scrapingData);
     }
     if (data.website === 'Buscape') {
       const result = await recoverBuscapeSearch(data.category, data.search);
       setScrapingData(result);
-      console.log(scrapingData);
     }
   };
 
