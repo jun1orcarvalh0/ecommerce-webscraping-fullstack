@@ -15,7 +15,7 @@ const schema = z.object({
 type FormProps = z.infer<typeof schema>;
 
 const SearchForm = () => {
-  const { setScrapingData } = useContext(Context);
+  const { setScrapingData, setIsLoading, isLoading } = useContext(Context);
   const {
     register,
     handleSubmit,
@@ -28,16 +28,19 @@ const SearchForm = () => {
 
   const handleForm = async (data: FormProps) => {
     if (data.website === 'MercadoLivre') {
+      setIsLoading(true);
       const result = await recoverMercadoLivreSearch(
         data.category,
         data.search
       );
-
       setScrapingData(result);
+      setIsLoading(false);
     }
     if (data.website === 'Buscape') {
+      setIsLoading(true);
       const result = await recoverBuscapeSearch(data.category, data.search);
       setScrapingData(result);
+      setIsLoading(false);
     }
   };
 

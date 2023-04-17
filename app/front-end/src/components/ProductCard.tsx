@@ -17,7 +17,7 @@ const ProductCard = ({
   link
 }: ProductType) => {
   return (
-    <div className="card w-3/12 h-fit rounded-xl border-2 border-slate-700:1 p-6 mb-4">
+    <div className="card w-3/12 h-fit rounded-xl border-2 border-slate-700:1 p-6 mb-4 px-10">
       <div className="flex h-48 max-h-full justify-center img-area">
         <img src={picture} alt={title} className="object-contain rounded-lg" />
       </div>
