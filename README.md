@@ -45,6 +45,8 @@ Installing the dependencies:
 npm install
 ```
 
+OBS: There is a file called .env.example, you must change it to ".env" and set your API's Url
+
 Running the application:
 ```sh
 npm run dev
@@ -75,6 +77,8 @@ Installing the dependencies:
 ```sh
 pip install -r requirements.txt 
 ```
+
+OBS: There is a file called .env.example, you must change it to ".env" and set your API's Url
 
 Running the application:
 ```sh
