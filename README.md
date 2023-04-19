@@ -82,7 +82,7 @@ Creation of virtual environment
 python3 -m venv .venv
 ```
 
-Enter in virtual enviroment:
+Enter in virtual environment:
 ```sh
 source .venv/bin/activate
 ```
